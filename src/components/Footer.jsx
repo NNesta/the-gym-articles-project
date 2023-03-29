@@ -8,7 +8,7 @@ const Footer = () => {
   useEffect(() => {
     !isLoading &&
       setPublishers(
-        Array.from(new Set(data.articles.map((article) => article.source.name)))
+        Array.from(new Set(data.map((article) => article.source.name)))
       );
   }, [data, isLoading]);
   console.log({ publishers });
