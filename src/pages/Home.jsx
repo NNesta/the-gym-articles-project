@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     if (!isLoading) {
       !source
-        ? setViewData(data)
+        ? setViewData(data.slice(0, 10))
         : setViewData(data.filter((article) => article.source.name === source));
     }
   }, [source, isLoading, data]);
@@ -25,9 +25,7 @@ const Home = () => {
       <Navbar filter={filter} setFilter={setFilter} />
       <Wrapper styles="mt-16 relative">
         {isLoading ? (
-          <div className="inline mx-auto text-center">
-            <Loading />
-          </div>
+          <Loading />
         ) : (
           <div className="flex gap-2 justify-end">
             <div className="max-w-[1280px] my-16 mx-auto grid lg:grid-cols-3 gap-3">
