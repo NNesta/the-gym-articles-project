@@ -1,27 +1,24 @@
-import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../context";
+import { useSelector } from "react-redux";
+import { useGetAllNewsQuery } from "../features/apiSlice";
 
 const Footer = () => {
-  const [publishers, setPublishers] = useState([]);
-  const { data, isLoading } = useContext(AppContext);
-  useEffect(() => {
-    !isLoading &&
-      setPublishers(
-        Array.from(new Set(data.map((article) => article.source.name)))
-      );
-  }, [data, isLoading]);
-  console.log({ publishers });
+  const { category } = useSelector((state) => state.news);
+  const { data: response, isLoading } = useGetAllNewsQuery(category);
+  const data = response?.articles;
+  const publishers = !isLoading
+    ? Array.from(new Set(data.map((article) => article.source.name)))
+    : [];
   return (
     <div className="border-primary py-6 mt-12 border-t border-black">
-      <ul className="grid lg:grid-cols-6 gap-6 justify-between py-6 border-primary max-w-[1440px] mx-auto">
-        {publishers?.map((item, index) => (
+      <ul className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 justify-between py-6 border-primary max-w-[1440px] mx-auto px-4">
+        {publishers?.map((publisher, index) => (
           <li key={index} className="text-lg font-medium ">
             <Link
               className="hover:underline hover:text-blue-500"
-              to={`/${item}`}
+              to={`/${encodeURIComponent(publisher)}`}
             >
-              {item}
+              {publisher}
             </Link>
           </li>
         ))}

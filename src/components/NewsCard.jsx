@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
-const NewsCard = ({ image, title, publisher, url }) => {
+const NewsCard = ({ image, title, publisher }) => {
   return (
-    <Link
-      className="py-4 first:col-span-2 gap-3 flex flex-col just px-2"
-      to={`/detail/${title}`}
-    >
-      <img className="flex-1 object-cover" src={image} alt="" />
-      <h1 className="text-3xl font-semibold hover:text-blue-500">{title}</h1>
-      <p className="text-xs hover:text-blue-500">Published by {publisher}</p>
-    </Link>
+    <div className="py-4 border border-gray-200 rounded-lg my-4 mx-2 hover:shadow-3xl duration-300 ease-in-out gap-3 flex flex-col just px-2">
+      <Link className="flex-1" to={`/detail/${encodeURIComponent(title)}`}>
+        <img className=" object-cover max-h-80" src={image} alt="" />
+      </Link>
+      <Link to={`/detail/${encodeURIComponent(title)}`}>
+        <h1 className="text-2xl font-medium hover:text-blue-500">{title}</h1>
+      </Link>
+      <Link
+        to={`/${encodeURIComponent(publisher)}`}
+        className="text-xs hover:text-blue-500"
+      >
+        Published by {publisher}
+      </Link>
+    </div>
   );
 };
 
