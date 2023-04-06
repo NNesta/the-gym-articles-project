@@ -42,7 +42,7 @@ const Footer = () => {
               { title: "Terms of Use", link: "terms" },
               { title: "About the News", link: "about" },
               { title: "Privacy Policy", link: "privacy" },
-              { title: "Contact the BBC", link: "contact" },
+              { title: "Contact the News", link: "contact" },
             ].map((item, index) => (
               <li className="hover:text-blue-300 hover:underline" key={index}>
                 <Link className="" to={item.link}>
