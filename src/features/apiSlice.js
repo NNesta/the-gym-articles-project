@@ -2,14 +2,21 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const today = new Date();
 
+const KEY = process.env.REACT_APP_KEY;
+const URL = process.env.REACT_APP_URL;
+
 export const newsApi = createApi({
   reducerPath: "newsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://news-proxy.netlify.app/api/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: URL }),
   endpoints: (builder) => ({
     getAllNews: builder.query({
       query: (category) =>
-        `everything?q=${category}&to=${today.toISOString()}&sortBy=publishedAt&apiKey=9898f7aecfb84ac9b602ae868ddfa004`,
+        `everything?q=${category}&to=${today.toISOString()}&sortBy=publishedAt&apiKey=${KEY}`,
+    }),
+    getAllTrendingNews: builder.query({
+      query: (category) =>
+        `top-headlines?pageSize=10&q=${category}&to=${today.toISOString()}&sortBy=publishedAt&apiKey=${KEY}`,
     }),
   }),
 });
-export const { useGetAllNewsQuery } = newsApi;
+export const { useGetAllNewsQuery, useGetAllTrendingNewsQuery } = newsApi;

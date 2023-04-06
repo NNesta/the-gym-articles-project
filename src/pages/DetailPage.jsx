@@ -1,21 +1,35 @@
 import { useParams } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Loading from "../components/Loading";
-import { useGetAllNewsQuery } from "../features/apiSlice";
+import {
+  useGetAllNewsQuery,
+  useGetAllTrendingNewsQuery,
+} from "../features/apiSlice";
+import Footer from "../components/ui/Footer";
 
 const DetailPage = () => {
   const { title } = useParams();
   const { category } = useSelector((state) => state.news);
   const { data: response, isLoading } = useGetAllNewsQuery(category);
-  const data = response?.articles;
-  const article = !isLoading && data.find((item) => item.title === title);
+  const { data: trendingResponse, isLoading: trendingIsLoading } =
+    useGetAllTrendingNewsQuery(category);
+  const articles = response?.articles;
+  const data = Array.isArray(articles) && [
+    ...articles,
+    ...trendingResponse?.articles,
+  ];
+  const article =
+    !isLoading &&
+    !trendingIsLoading &&
+    data.find((item) => item.title === title);
   if (!article && !isLoading) {
   }
 
   return (
     <div>
-      <div className="max-w-[1280px] mx-auto ">
+      <div className="max-w-7xl mx-auto ">
         {isLoading ? (
           <Loading />
         ) : (
@@ -27,27 +41,40 @@ const DetailPage = () => {
                     to="/"
                     className="text-2xl font-bold text-blue-500 flex items-center gap-2"
                   >
-                    <span class="material-symbols-outlined">arrow_back</span>
+                    <BsArrowLeft />
                     <span>Home</span>
                   </Link>
                 </div>
-                <div className="my-16">
-                  <img src={article.urlToImage} alt="" />
-                  <h1 className="text-5xl font-semibold text-center">
-                    {article.title}
-                  </h1>
-                  <p>Writen by {article.author}</p>
-                  <p>
-                    Published on{" "}
-                    {new Date(article.publishedAt).toLocaleString()}
-                  </p>
-                  <p className="my-4 text-lg">{article.description}</p>
-                  <Link
-                    to={article.url}
-                    className="bg-blue-500 text-white rounded-xl p-2 mt-32 text-center"
-                  >
-                    Read more
-                  </Link>
+                <div className="my-16 flex flex-col justify-center items-center">
+                  <div>
+                    <img
+                      className="object-contain mx-auto"
+                      src={article.urlToImage}
+                      alt=""
+                    />
+                  </div>
+
+                  <div className="bg-white shadow-3xl px-4 max-w-3xl -mt-20 py-16">
+                    <h1 className="text-4xl max-w-3xl mx-auto font-semibold text-center italic">
+                      {article.title}
+                    </h1>
+                    <p className="font-roboto italic font-medium">
+                      Writen by {article.author}
+                    </p>
+                    <p className="font-roboto italic">
+                      Published on{" "}
+                      {new Date(article.publishedAt).toLocaleString()}
+                    </p>
+                    <p className="my-4 text-lg first-letter:text-5xl first-letter:font-bold first-letter:border-blue-500 first-letter:ring-2 first-letter:px-1 first-letter:mx-1">
+                      {article.content + article.description.repeat(10)}
+                    </p>
+                    <Link
+                      to={article.url}
+                      className="bg-blue-500 text-white rounded-xl p-2 mt-32 text-center"
+                    >
+                      Read more
+                    </Link>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -57,7 +84,7 @@ const DetailPage = () => {
                   to="/"
                   className="flex items-center justify-center text-2xl text-blue-500 cursor-pointer"
                 >
-                  <span class="material-symbols-outlined">arrow_back</span>{" "}
+                  <BsArrowLeft />
                   <span>Return Home</span>
                 </Link>
               </div>
@@ -65,6 +92,7 @@ const DetailPage = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

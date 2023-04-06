@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   category: "all",
+  filter: "",
+  showPublishers: false,
 };
 
 export const newsSlice = createSlice({
@@ -11,8 +13,15 @@ export const newsSlice = createSlice({
     changeCategory: (state, action) => {
       state.category = action.payload;
     },
+    filterNews: (state, action) => {
+      state.filter = action.payload;
+    },
+    setShowPublishers: (state, action) => {
+      state.showPublishers = !state.showPublishers;
+    },
   },
 });
 
-export const { changeCategory } = newsSlice.actions;
+export const { changeCategory, filterNews, setShowPublishers } =
+  newsSlice.actions;
 export default newsSlice.reducer;
