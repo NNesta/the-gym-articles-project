@@ -4,7 +4,7 @@ import { useGetAllNewsQuery } from "../features/apiSlice";
 import Wrapper from "../components/Wrapper";
 import Navbar from "../components/ui/Navbar";
 import Loading from "../components/Loading";
-import NewsCard from "../components/newsCard";
+import NewsCard from "../components/NewsCard";
 import HomeNavbar from "../components/HomeNavbar";
 import TrendingSection from "../components/ui/TrendingSection";
 import Footer from "../components/ui/Footer";
@@ -54,8 +54,8 @@ const Home = () => {
           </div>
           <TrendingSection />
         </div>
-        <Footer />
       </Wrapper>
+      <Footer />
     </div>
   );
 };

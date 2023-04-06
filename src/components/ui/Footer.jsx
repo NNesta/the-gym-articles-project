@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="bg-[#2E2F41] py-4 text-gray-200">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-semibold px-4">Explore the NEWS</h1>
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col justify-center">
           <ul className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-between items-center gap-4 my-4 px-8">
             {[
               { name: "All", value: "all", id: nanoid(10) },
@@ -37,7 +37,7 @@ const Footer = () => {
             ))}
           </ul>
 
-          <ul className="self-start flex flex-col md:flex-row md:items-center gap-12 my-4 px-8 py-4">
+          <ul className=" flex flex-col md:flex-row md:items-center gap-12 my-4 px-8 py-4">
             {[
               { title: "Terms of Use", link: "terms" },
               { title: "About the News", link: "about" },
@@ -51,7 +51,7 @@ const Footer = () => {
               </li>
             ))}
           </ul>
-          <p>
+          <p className="px-8">
             Copyright The News <span>&#169;</span> 2023
           </p>
         </div>
