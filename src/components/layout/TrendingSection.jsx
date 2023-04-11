@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { useGetAllTrendingNewsQuery } from "../../features/apiSlice";
-import Loading from "../Loading";
-import TrendingCard from "../TrendingCard";
+import Loading from "../ui/Loading";
+import TrendingCard from "../ui/TrendingCard";
 
 const TrendingSection = () => {
   const { source } = useParams();

@@ -5,7 +5,7 @@ import { filterNews } from "../../features/newsSlice";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
-import Publisher from "./Publisher";
+import Publisher from "../ui/Publisher";
 
 const Navbar = () => {
   const dispatch = useDispatch();

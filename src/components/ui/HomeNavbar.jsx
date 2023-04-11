@@ -2,9 +2,9 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
-import { changeCategory } from "../features/newsSlice";
+import { changeCategory } from "../../features/newsSlice";
 import { MdOutlineArrowBackIos, MdArrowForwardIos } from "react-icons/md";
-import useDate from "../hooks/useDate";
+import useDate from "../../hooks/useDate";
 
 const HomeNavbar = () => {
   const { day, month, date, year } = useDate();

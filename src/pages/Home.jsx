@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useGetAllNewsQuery } from "../features/apiSlice";
-import Wrapper from "../components/Wrapper";
-import Navbar from "../components/ui/Navbar";
-import Loading from "../components/Loading";
-import NewsCard from "../components/NewsCard";
-import HomeNavbar from "../components/HomeNavbar";
-import TrendingSection from "../components/ui/TrendingSection";
-import Footer from "../components/ui/Footer";
+import Wrapper from "../components/ui/Wrapper";
+import Navbar from "../components/layout/Navbar";
+import Loading from "../components/ui/Loading";
+import NewsCard from "../components/ui/NewsCard";
+import HomeNavbar from "../components/ui/HomeNavbar";
+import TrendingSection from "../components/layout/TrendingSection";
+import Footer from "../components/layout/Footer";
 
 const Home = () => {
   const { category } = useSelector((state) => state.news);
@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div className="bg-[#F7F7F7]">
       <Navbar />
-      <Wrapper styles="relative  max-w-[1440px]">
+      <Wrapper styles="relative max-w-[1440px]">
         <div className="flex flex-col lg:flex-row justify-end  mt-20 py-16">
           <div className="max-w-5xl mr-auto  gap-3">
             <HomeNavbar />

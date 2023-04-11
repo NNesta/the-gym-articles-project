@@ -2,12 +2,12 @@ import { useParams } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Loading from "../components/Loading";
+import Loading from "../components/ui/Loading";
 import {
   useGetAllNewsQuery,
   useGetAllTrendingNewsQuery,
 } from "../features/apiSlice";
-import Footer from "../components/ui/Footer";
+import Footer from "../components/layout/Footer";
 
 const DetailPage = () => {
   const { title } = useParams();
