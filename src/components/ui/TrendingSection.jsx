@@ -23,7 +23,7 @@ const TrendingSection = () => {
   return (
     <div>
       {viewNews.length ? (
-        <div className="bg-[#EDEDED] w-full">
+        <div className="bg-[#EDEDED] max-w-[416px]">
           <div className="flex items-center justify-between px-6">
             <h1 className="text-xl font-semibold py-4 px-2">WEEKLY TRENDING</h1>
             <HiOutlineAdjustmentsHorizontal />

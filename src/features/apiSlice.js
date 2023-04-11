@@ -15,7 +15,7 @@ export const newsApi = createApi({
     }),
     getAllTrendingNews: builder.query({
       query: (category) =>
-        `top-headlines?pageSize=10&q=${category}&to=${today.toISOString()}&sortBy=publishedAt&apiKey=${KEY}`,
+        `top-headlines?q=${category}&to=${today.toISOString()}&sortBy=publishedAt&apiKey=${KEY}`,
     }),
   }),
 });

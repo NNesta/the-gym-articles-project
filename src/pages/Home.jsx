@@ -26,11 +26,11 @@ const Home = () => {
       : data.filter((article) => article.source.name === source)
     : [];
   return (
-    <div className="">
+    <div className="bg-[#F7F7F7]">
       <Navbar />
-      <Wrapper styles="relative max-w-[1440px]">
-        <div className="flex flex-col lg:flex-row justify-end bg-[#F7F7F7] mt-20 py-16">
-          <div className="max-w-[1024px] mr-auto px-4 gap-3">
+      <Wrapper styles="relative  max-w-[1440px]">
+        <div className="flex flex-col lg:flex-row justify-end  mt-20 py-16">
+          <div className="max-w-5xl mr-auto  gap-3">
             <HomeNavbar />
             {isLoading || isFetching ? (
               <Loading />

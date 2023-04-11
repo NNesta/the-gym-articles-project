@@ -24,12 +24,10 @@ const DetailPage = () => {
     !isLoading &&
     !trendingIsLoading &&
     data.find((item) => item.title === title);
-  if (!article && !isLoading) {
-  }
 
   return (
     <div>
-      <div className="max-w-7xl mx-auto ">
+      <div className="max-w-5xl mx-auto ">
         {isLoading ? (
           <Loading />
         ) : (
@@ -46,15 +44,13 @@ const DetailPage = () => {
                   </Link>
                 </div>
                 <div className="my-16 flex flex-col justify-center items-center">
-                  <div>
-                    <img
-                      className="object-contain mx-auto"
-                      src={article.urlToImage}
-                      alt=""
-                    />
-                  </div>
+                  <img
+                    className="object-cover w-full max-h-[600px]"
+                    src={article.urlToImage}
+                    alt=""
+                  />
 
-                  <div className="bg-white shadow-3xl px-4 max-w-3xl -mt-20 py-16">
+                  <div className="bg-white shadow-3xl px-4 max-w-3xl  py-16">
                     <h1 className="text-4xl max-w-3xl mx-auto font-semibold text-center italic">
                       {article.title}
                     </h1>
