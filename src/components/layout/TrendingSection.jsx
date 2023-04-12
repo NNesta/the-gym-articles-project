@@ -17,7 +17,7 @@ const TrendingSection = () => {
   const data = response?.articles;
   const viewNews = !isLoading
     ? !source
-      ? data.slice(0, 10)
+      ? data.slice(0, 8)
       : data.filter((article) => article.source.name === source)
     : [];
   return (

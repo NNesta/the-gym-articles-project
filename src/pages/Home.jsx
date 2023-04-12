@@ -35,7 +35,7 @@ const Home = () => {
             {isLoading || isFetching ? (
               <Loading />
             ) : (
-              <div className="grid lg:grid-cols-2 md:grid-cols-2 h-full overflow-y-scroll scrollbar-hide">
+              <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-y-8 overflow-y-scroll scrollbar-hide">
                 {viewData
                   .filter((item) =>
                     item.title.toLowerCase().includes(filter.toLowerCase())

@@ -66,11 +66,9 @@ const DetailPage = () => {
                     </p>
                     <p className="my-4 text-lg first-letter:text-5xl first-letter:font-bold first-letter:border-blue-500 first-letter:ring-2 first-letter:px-1 first-letter:mx-1">
                       {article.description
-                        ?.replace(/... \[\+.*\]/g, "")
+                        ?.replace(/\.* \[.*\]/g, "")
                         ?.repeat(5) +
-                        article.content
-                          ?.replace(/... \[\+.*\]/g, "")
-                          ?.repeat(5)}
+                        article.content?.replace(/\.* \[.*\]/g, "")?.repeat(5)}
                     </p>
                     <Link
                       to={article.url}
