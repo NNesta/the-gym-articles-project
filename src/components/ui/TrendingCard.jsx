@@ -5,7 +5,14 @@ const TrendingCard = ({ image, title, publisher, author }) => {
   return (
     <div className="py-4 border border-gray-200 rounded-lg my-4 mx-2 grid grid-cols-3 hover:shadow-3xl duration-300 ease-in-out gap-3   px-2">
       <Link className="" to={`/detail/${encodeURIComponent(title)}`}>
-        <img className=" object-cover max-h-80" src={image} alt="" />
+        <img
+          className=" object-cover max-h-80"
+          src={
+            image ||
+            "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?auto=compress&cs=tinysrgb&w=600"
+          }
+          alt=""
+        />
       </Link>
       <div className="flex flex-col col-span-2">
         {author && (

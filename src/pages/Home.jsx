@@ -17,7 +17,6 @@ const Home = () => {
     isLoading,
     isFetching,
   } = useGetAllNewsQuery(category);
-
   const data = response?.articles;
   const { source } = useParams();
   const viewData = !isLoading
@@ -25,6 +24,7 @@ const Home = () => {
       ? data.slice(0, 6)
       : data.filter((article) => article.source.name === source)
     : [];
+  console.log(viewData);
   return (
     <div className="bg-[#F7F7F7]">
       <Navbar />

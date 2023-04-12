@@ -46,7 +46,10 @@ const DetailPage = () => {
                 <div className="my-16 flex flex-col justify-center items-center">
                   <img
                     className="object-cover w-full max-h-[600px]"
-                    src={article.urlToImage}
+                    src={
+                      article.urlToImage ||
+                      "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    }
                     alt=""
                   />
 
@@ -62,7 +65,12 @@ const DetailPage = () => {
                       {new Date(article.publishedAt).toLocaleString()}
                     </p>
                     <p className="my-4 text-lg first-letter:text-5xl first-letter:font-bold first-letter:border-blue-500 first-letter:ring-2 first-letter:px-1 first-letter:mx-1">
-                      {article.content + article.description.repeat(10)}
+                      {article.description
+                        ?.replace(/... \[\+.*\]/g, "")
+                        ?.repeat(5) +
+                        article.content
+                          ?.replace(/... \[\+.*\]/g, "")
+                          ?.repeat(5)}
                     </p>
                     <Link
                       to={article.url}
