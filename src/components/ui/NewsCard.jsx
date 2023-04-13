@@ -13,9 +13,10 @@ const NewsCard = ({ image, title, publisher }) => {
         />
       </Link>
       <Link to={`/detail/${encodeURIComponent(title)}`}>
-        <h1 className="text-2xl font-medium hover:text-blue-500">
-          {title.slice(0, 100)}
-        </h1>
+        <h1
+          dangerouslySetInnerHTML={{ __html: title.slice(0, 100) }}
+          className="text-2xl font-medium hover:text-blue-500"
+        ></h1>
       </Link>
       <Link
         to={`/${encodeURIComponent(publisher)}`}

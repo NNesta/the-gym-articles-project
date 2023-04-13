@@ -54,9 +54,10 @@ const DetailPage = () => {
                   />
 
                   <div className="bg-white shadow-3xl px-4 max-w-3xl  py-16">
-                    <h1 className="text-4xl max-w-3xl mx-auto font-semibold text-center italic">
-                      {article.title}
-                    </h1>
+                    <h1
+                      dangerouslySetInnerHTML={{ __html: title }}
+                      className="text-4xl max-w-3xl mx-auto font-semibold text-center italic"
+                    ></h1>
                     <p className="font-roboto italic font-medium">
                       Writen by {article.author}
                     </p>

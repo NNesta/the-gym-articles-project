@@ -25,9 +25,10 @@ const TrendingCard = ({ image, title, publisher, author }) => {
           </Link>
         )}
         <Link to={`/detail/${encodeURIComponent(title)}`}>
-          <h1 className="text-xl font-medium hover:text-blue-500">
-            {title.slice(0, 90)}
-          </h1>
+          <h1
+            dangerouslySetInnerHTML={{ __html: title.slice(0, 90) }}
+            className="text-xl font-medium hover:text-blue-500"
+          ></h1>
         </Link>
       </div>
     </div>
