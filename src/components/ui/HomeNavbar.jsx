@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { nanoid } from "nanoid";
 import { changeCategory } from "../../features/newsSlice";
 import { MdOutlineArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import useDate from "../../hooks/useDate";
+import { CATEGORIES } from "../../assets/data";
 
 const HomeNavbar = () => {
   const { day, month, date, year } = useDate();
@@ -56,20 +56,7 @@ const HomeNavbar = () => {
             ref={ref}
             className="flex items-center gap-2 text-black uppercase overflow-x-scroll  scrollbar-hide scroll-smooth"
           >
-            {[
-              { name: "All", value: "all", id: nanoid(10) },
-              { name: "Business", value: "business", id: nanoid(10) },
-              { name: "Movie", value: "movie", id: nanoid(10) },
-              { name: "Sport", value: "sport", id: nanoid(10) },
-              { name: "Music", value: "music", id: nanoid(10) },
-              { name: "Politics", value: "politics", id: nanoid(10) },
-              { name: "Technology", value: "technology", id: nanoid(10) },
-              { name: "Entertainment", value: "entertainment", id: nanoid(10) },
-              { name: "Finance", value: "finance", id: nanoid(10) },
-              { name: "Education", value: "education", id: nanoid(10) },
-              { name: "Health", value: "health", id: nanoid(10) },
-              { name: "Culture", value: "culture", id: nanoid(10) },
-            ].map((categoryObject) => (
+            {CATEGORIES.map((categoryObject) => (
               <li
                 className={`text-base font-medium hover:text-blue-300 hover:underline ${
                   categoryObject.value === category &&
