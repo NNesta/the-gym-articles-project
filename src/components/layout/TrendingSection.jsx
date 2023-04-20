@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { useGetAllTrendingNewsQuery } from "../../features/apiSlice";
@@ -6,20 +5,14 @@ import Loading from "../ui/Loading";
 import TrendingCard from "../ui/TrendingCard";
 
 const TrendingSection = () => {
-  const { source } = useParams();
-  const { category } = useSelector((state) => state.news);
-  const { filter } = useSelector((state) => state.news);
+  const { category, filter } = useSelector((state) => state.news);
   const {
     data: response,
     isLoading,
     isFetching,
   } = useGetAllTrendingNewsQuery(category);
   const data = response?.articles;
-  const viewNews = !isLoading
-    ? !source
-      ? data.slice(0, 8)
-      : data.filter((article) => article.source.name === source)
-    : [];
+  const viewNews = !isLoading ? data.slice(0, 8) : [];
   return (
     <div>
       {viewNews.length ? (

@@ -79,7 +79,9 @@ const HomeNavbar = () => {
               >
                 <Link
                   to="/"
-                  onClick={() => dispatch(changeCategory(categoryObject.value))}
+                  onClick={() => {
+                    dispatch(changeCategory(categoryObject.value));
+                  }}
                 >
                   {categoryObject.name}
                 </Link>

@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useGetAllNewsQuery } from "../features/apiSlice";
 import Wrapper from "../components/ui/Wrapper";
@@ -10,21 +9,14 @@ import TrendingSection from "../components/layout/TrendingSection";
 import Footer from "../components/layout/Footer";
 
 const Home = () => {
-  const { category } = useSelector((state) => state.news);
-  const { filter } = useSelector((state) => state.news);
+  const { category, publisher, filter } = useSelector((state) => state.news);
   const {
     data: response,
     isLoading,
     isFetching,
-  } = useGetAllNewsQuery(category);
-  const data = response?.articles;
-  const { source } = useParams();
-  const viewData = !isLoading
-    ? !source
-      ? data.slice(0, 6)
-      : data.filter((article) => article.source.name === source)
-    : [];
-  console.log(viewData);
+  } = useGetAllNewsQuery({ category, publisher });
+  const data = !isLoading ? response.articles : [];
+  const viewData = data.slice(0, 6);
   return (
     <div className="bg-[#F7F7F7]">
       <Navbar />
