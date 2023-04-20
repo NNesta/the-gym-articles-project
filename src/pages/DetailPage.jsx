@@ -11,8 +11,11 @@ import Footer from "../components/layout/Footer";
 
 const DetailPage = () => {
   const { title } = useParams();
-  const { category } = useSelector((state) => state.news);
-  const { data: response, isLoading } = useGetAllNewsQuery(category);
+  const { category, publisher } = useSelector((state) => state.news);
+  const { data: response, isLoading } = useGetAllNewsQuery({
+    category,
+    publisher,
+  });
   const { data: trendingResponse, isLoading: trendingIsLoading } =
     useGetAllTrendingNewsQuery(category);
   const articles = response?.articles;

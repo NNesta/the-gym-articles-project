@@ -1,5 +1,6 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useGetAllNewsQuery } from "../features/apiSlice";
+import { setPublisher } from "../features/newsSlice";
 import Wrapper from "../components/ui/Wrapper";
 import Navbar from "../components/layout/Navbar";
 import Loading from "../components/ui/Loading";
@@ -10,11 +11,13 @@ import Footer from "../components/layout/Footer";
 
 const Home = () => {
   const { category, publisher, filter } = useSelector((state) => state.news);
+  const dispatch = useDispatch();
   const {
     data: response,
     isLoading,
     isFetching,
   } = useGetAllNewsQuery({ category, publisher });
+  !isLoading && !response.totalResults && dispatch(setPublisher(""));
   const data = !isLoading ? response.articles : [];
   const viewData = data.slice(0, 6);
   return (
