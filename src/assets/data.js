@@ -3,6 +3,8 @@ import { nanoid } from "nanoid";
 export const CATEGORIES = [
   { name: "All", value: "all", id: nanoid(10) },
   { name: "Business", value: "business", id: nanoid(10) },
+  { name: "Job", value: "job", id: nanoid(10) },
+  { name: "Software", value: "software", id: nanoid(10) },
   { name: "Movie", value: "movie", id: nanoid(10) },
   { name: "Sport", value: "sport", id: nanoid(10) },
   { name: "Music", value: "music", id: nanoid(10) },

@@ -19,7 +19,7 @@ const Home = () => {
   } = useGetAllNewsQuery({ category, publisher });
   !isLoading && !response.totalResults && dispatch(setPublisher(""));
   const data = !isLoading ? response.articles : [];
-  const viewData = data.slice(0, 6);
+  const viewData = publisher ? data : data.slice(0, 6);
   return (
     <div className="bg-[#F7F7F7]">
       <Navbar />
